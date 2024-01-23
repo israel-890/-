@@ -1,19 +1,20 @@
 import pytube
+import os
 
 
 def download_audio(video):
     # stream = video.streams.filter(only_audio=True).first()
     stream = video.streams.filter(type="audio").first()
-    filename = f"{input('הכנס שם:')}.mp3"
-    down_stream = input("enter stream to download: ")
-    stream.download(down_stream, filename)
+    filename = f"{input('שמור בשם:')}.mp3"
+    your_downloads = os.path.expanduser("~/Downloads")
+    stream.download("your_downloads", filename)
 
 
 def download_video(video):
     stream = video.streams.filter(res="720p").first()
-    filename = f"{input('הכנס שם:')}.mp4"
-    down_stream = input("enter stream to download: ")
-    stream.download(down_stream, filename)
+    filename = f"{input('שמור בשם:')}.mp4"
+    your_downloads = os.path.expanduser("~/Downloads")
+    stream.download("your_downloads", filename)
 
 
 def chose_con(chose):
